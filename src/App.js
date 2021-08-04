@@ -48,7 +48,7 @@ function App() {
     <div className="container">
       <h1 >Todo List</h1> 
       <div class="row">
-        <div class="col s10"> 
+        <div class="col s8 l10"> 
           <input ref={todoNameRef}  type="text" placeholder="To Do Item"/>
         </div>
         <div class="col s2">
@@ -58,20 +58,19 @@ function App() {
       
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
        
-        {todos===null ?
-        <div>
-        <div class="row">
-          <div class="col s10"> 
-            <h5 class="teal-text text-darken-2">{todos.filter(todo => !todo.complete).length} left to do</h5>
-          </div> 
-        </div>
-        <div class="row">
-          <button  onClick={handleClearTodos} className="waves-effect waves-light btn">Clear Complete</button>
-        </div>
-      </div>
-          
-          : null}  
-                          
+        {todos.length === 0 ?
+          null:
+          <div>
+            <div class="row">
+              <div class="col s3 offset-s2" > 
+                <h5 class="teal-text text-darken-2">{todos.filter(todo => !todo.complete).length} left to do</h5>
+              </div> 
+              <div class="col s4" > 
+                <button  onClick={handleClearTodos} className="waves-effect waves-light btn">Clear Completed</button>
+              </div> 
+            </div>
+          </div>
+        }                     
     </div>
   );
 }
